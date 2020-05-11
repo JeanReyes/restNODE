@@ -1,48 +1,27 @@
 require('./config/config')
 
 const express = require('express');
-const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 
 
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded 
+// paquete para permitir leer variables enviadas por post
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/usuarios', (req, res)=>{
 
-    let user = [
-        {"nombre": "Nicolas"},
-        {"nombre": "Denisse"}
-    ]
-    res.json(user)
+app.use( require('./routes/usuario' ));
+
+
+/**conecion a base de datos */
+mongoose.connect(process.env.URLMONGO,
+{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (err, res)=>{
+    if(err) throw err;
+    console.log("Base de datos online")
 })
-
-app.post('/usuarios', (req, res)=>{
-    let body = req.body;
-    if(body.nombre === undefined){
-        res.status(400).json({
-            ok: false,
-            mensaje: 'El nombre es necesario'
-        })
-    }else{
-        res.json({
-            persona: body
-        })
-    }
-})
-
-app.put('/usuarios/:id', (req, res)=>{
-
-    let id = req.params.id;
-    res.json({id})
-})
-
-app.delete('/usuarios', (req, res)=>{
-    res.json("deleteUser")
-})
-
 
 
 app.listen(process.env.PORT, ()=>{
