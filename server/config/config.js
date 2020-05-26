@@ -16,6 +16,7 @@ let urlBD;
 if(process.env.NODE_ENV == 'dev'){
     urlBD = 'mongodb://localhost:27017/cafe'
 }else{
+    //esta variable la creo en heroku
     urlBD = process.env.MONGO_URI
 }
 
@@ -28,5 +29,7 @@ process.env.CADUCIDAD_TOKEN =  60*60*24*30;
 
 // seed o token
 
+
+//seed tambien es creado en el ambiente de heroku
 process.env.SEED = process.env.SEED || 'seed-desarrollo'
 

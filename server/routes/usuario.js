@@ -3,7 +3,7 @@ const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt')
 const _ = require('underscore')
 const fs = require('fs');
-require('./text');
+//require('./text');
 
 const {verificaToken, verificaAdmin_Role} = require('../middlewares/autenticacion')
 
@@ -70,12 +70,12 @@ app.post('/usuarios', [verificaToken, verificaAdmin_Role], (req, res)=>{
 
             //menuMitta.push(UsuarioDB)
 
-            let menu =`menuMitta = ${JSON.stringify(UsuarioDB)}`
+            // let menu =`menuMitta = ${JSON.stringify(UsuarioDB)}`
     
-            fs.writeFile('server/routes/text.js', menu, (error) => {
-                if (error) throw error;
+            // fs.writeFile('server/routes/text.js', menu, (error) => {
+            //     if (error) throw error;
                 
-            });
+            // });
         
             // let nuevoMenu = menuMitta.push(UsuarioDB);
             // console.log("nuevomenu",nuevoMenu)
