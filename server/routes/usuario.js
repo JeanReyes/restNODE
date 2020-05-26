@@ -5,9 +5,11 @@ const _ = require('underscore')
 const fs = require('fs');
 require('./text');
 
+const {verificaToken, verificaAdmin_Role} = require('../middlewares/autenticacion')
+
 const app = express();
 
-app.get('/usuarios', (req, res)=>{
+app.get('/usuarios', verificaToken, (req, res)=>{
 
     /**metodo que devuelve los resultados paginados
      * skip = desde
@@ -46,7 +48,7 @@ app.get('/usuarios', (req, res)=>{
             })
 })
 
-app.post('/usuarios', (req, res)=>{
+app.post('/usuarios', [verificaToken, verificaAdmin_Role], (req, res)=>{
 
     let body = req.body;
 
@@ -86,7 +88,7 @@ app.post('/usuarios', (req, res)=>{
     })
 })
 
-app.put('/usuarios/:id', (req, res)=>{
+app.put('/usuarios/:id', [verificaToken, verificaAdmin_Role], (req, res)=>{
 
     let id = req.params.id;
 
@@ -110,7 +112,7 @@ app.put('/usuarios/:id', (req, res)=>{
     })
 })
 
-app.delete('/usuarios/:id', (req, res)=>{
+app.delete('/usuarios/:id', verificaToken, (req, res)=>{
     let id = req.params.id
 
     let estado = {

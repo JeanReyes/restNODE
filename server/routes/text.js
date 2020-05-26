@@ -1,1 +1,1 @@
-menuMitta = {"role":"USER_ROLE","estado":true,"google":false,"_id":"5eb190c2235ab647806c5770","nombre":"Super Saiyayin fase18","email":"saiyayinf25@gmail.com","__v":0}
+menuMitta = {"role":"USER_ROLE","estado":true,"google":false,"_id":"5ebb54575a321c43c89ada00","nombre":"Super Saiyayin fase52","email":"saiyayinf52@gmail.com","__v":0}
