@@ -117,6 +117,8 @@ app.post('/google', async(req, res) => {
             usuario.img = googleUser.img;
             usuario.google = true;
             usuario.password = ':)';
+
+            console.log("nuevo usuario", usuario)
            
             usuario.save((err, usuarioDB) =>{
                 if ( err ){
